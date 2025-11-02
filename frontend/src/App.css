@@ -1,0 +1,19 @@
+#root {
+  width: 100%;
+  text-align: center;
+}
+
+.animation {
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    top: 50px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
