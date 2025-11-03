@@ -53,7 +53,6 @@ const root = {
     try {
 
       const cacheKey = buildCacheKey('characters', { filters, limit, offset  });
-
       const cachedData = await getCachedData(cacheKey);
 
       if (cachedData) {
@@ -94,6 +93,15 @@ const root = {
 
   getCharacterById: async ({ id }: any) => {
     try {
+
+      const cacheKey = buildCacheKey('character', { id });
+      const cachedData = await getCachedData(cacheKey);
+
+      if (cachedData) {
+        console.log('Cache HIT for getCharacterByID query');
+        return cachedData;
+      }
+
       const character = await Character.findByPk(id, {
         include: [
           {
@@ -110,6 +118,9 @@ const root = {
       const comments = character?.toJSON().comments.map((comment: any) => ({
         ...comment,
       }));
+
+      
+      await setCachedData(cacheKey, character, 3600);
 
       return { ...character?.toJSON(), isFavorite: !!character?.toJSON().isFavorite, comments }
     } catch (error) {
