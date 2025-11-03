@@ -89,6 +89,7 @@ npm run dev
 
 * `.env` file **IS NOT upload to repository** `.env.example` file replace it.
 * Remember install dependencies inside each folder (backend and frontend)
+* Currently working docs using Swagger
 ---
 
 ## ✨ Autor
