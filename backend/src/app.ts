@@ -4,6 +4,7 @@ import { schema } from "./graphql/schema";
 import { root } from "./graphql/resolver";
 import { createHandler } from "graphql-http/lib/use/express"
 import { Logger } from "./middleware/logger";
+import { connectRedis } from "./redis/redis";
 
 const dotenv = require('dotenv');
 dotenv.config()
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use(Logger)
 
 testConnection()
+connectRedis()
 
 app.all('/graphql', createHandler({
   schema: schema,
@@ -67,7 +69,7 @@ app.get('/', (req: Request, res: Response) => {
         }
       }`,
       singleCharacter: `query {
-        character(id: 1) {
+        getCharacterById(id: 1) {
           name
           status
           species
