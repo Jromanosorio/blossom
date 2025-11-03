@@ -55,8 +55,83 @@ npm run dev
 
 #### Now can access to project 
   1. API `http://localhost:{PORT}` PORT by default = 3000
-  2. MAKE GRAPHQL POST API CALLS `http://localhost:{PORT}/graphql` PORT by default = 3000
-  3. FRONTEND `http://localhost:{PORT}` PORT by default = 5173
+  2. FRONTEND `http://localhost:{PORT}` PORT by default = 5173
+
+---
+
+## Rutas de la API
+
+#### Available filters (optionals)
+
+```
+name: String,
+status: Status (Alive, Dead, unknown)'
+species: String,
+gender: Gender (Female, Male, Genderless, Unknown),
+sort: (ASC, DESC), 
+```
+
+#### **POST** `/graphql`
+
+Get all characters data
+
+**Body requerido (JSON):**
+
+```json
+{
+  "query": "query($filter: Filters){ getAllCharacters(filters: $filter) { id name status species gender origin image isFavorite } }",
+  "variables": {
+    "filter": { "status": "Alive", "species": "Human" }
+  }
+}
+```
+
+#### **POST** `/graphql`
+
+Get favorite characters data
+
+**Body requerido (JSON):**
+
+```json
+{
+  "query": "query($filter: Filters){ getFavorites(filters: $filter) { id name status species gender origin image isFavorite } }",
+  "variables": {
+    "filter": { }
+  }
+}
+```
+
+#### **POST** `/graphql`
+
+Get character by ID
+
+**Body requerido (JSON):**
+
+```json
+{
+  "query": "query($id: Int!){ getCharacterById(id: $id) { id name status species gender origin image isFavorite comments { user comment } } }",
+  "variables": {
+    "id": 1
+  }
+}
+```
+
+#### **POST** `/graphql`
+
+Send comment by characterID
+
+**Body requerido (JSON):**
+
+```json
+{
+  "query": "query($characterId: Int!, $user: String!, $comment: String!) {createComment(characterId: $characterId, user: $user, comment: $comment) { user comment } }",
+  "variables": {
+    "characterId": 1,
+    "user": "username",
+    "comment": "this is a comment"
+  }
+}
+```
 
 ---
 
