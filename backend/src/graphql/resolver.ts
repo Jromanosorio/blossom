@@ -1,6 +1,6 @@
 import { Op, WhereOptions } from "sequelize"
 import { Character, Comment, Favorite } from '../database/models';
-import { deleteCachedDataByPrefix, getCachedData, setCachedData } from "../redis/redis";
+import { deleteCachedData, deleteCachedDataByPrefix, getCachedData, setCachedData } from "../redis/redis";
 
 type Filters = {
   name?: string;
@@ -193,7 +193,8 @@ const root = {
         await favCharacter.destroy()
         await deleteCachedDataByPrefix('favorites');
         await deleteCachedDataByPrefix('characters');
-
+        await deleteCachedData(buildCacheKey('character', { id }))
+        
         return { ...character, isFavorite: false }
       }
 
@@ -201,6 +202,7 @@ const root = {
 
       await deleteCachedDataByPrefix('favorites');
       await deleteCachedDataByPrefix('characters');
+      await deleteCachedData(buildCacheKey('character', { id }))
 
       return { ...character, isFavorite: true }
 
