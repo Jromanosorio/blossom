@@ -1,4 +1,8 @@
 import { sequelizeConfig } from "../config";
+const Character = require('../models/Character.model');
+const Favorite = require('../models/Favorite.model');
+const Comments = require('../models/Comment.model');
+
 
 const runMigrations = async () => {
   try {
