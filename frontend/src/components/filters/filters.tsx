@@ -11,11 +11,11 @@ export interface CharacterFilter {
 }
 
 interface FiltersProps {
+    onShowFavorites: () => void;
     onFilterChange: (filters: CharacterFilter) => void
-    delay?: number
 }
 
-function Filters({ onFilterChange }: FiltersProps) {
+function Filters({ onFilterChange, onShowFavorites }: FiltersProps) {
     const [filters, setFilters] = useState<CharacterFilter>({
         sort: 'asc'
     })
@@ -42,26 +42,39 @@ function Filters({ onFilterChange }: FiltersProps) {
     }
 
     return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-10 space-y-6">
-            <div className="flex justify-between items-center">
+        <section className="bg-gray-800 border border-gray-700 rounded-lg p-10 space-y-6">
+            <section className="flex justify-between items-center">
                 <h2 className="font-semibold text-lg">Filters and sorting</h2>
-                <button className="flex gap-2 items-center justify-center font-semibold rounded-lg transition-colors duration-200 cursor-pointer border-2 px-4 py-2 text-sm border-orange text-orange">
+                <button onClick={onShowFavorites} className="flex gap-2 items-center justify-center font-semibold rounded-lg transition-colors duration-200 cursor-pointer border-2 px-4 py-2 text-sm border-orange text-orange">
                     <FaHeart size={15} />
                     Favorites
                 </button>
-            </div>
-            <div className="inline-block w-full space-y-1">
-                <p className="text-left text-gray-300">Name</p>
-                <input
-                    name="name"
-                    type="text"
-                    value={filters.name || ""}
-                    onChange={handleChange}
-                    placeholder="Search by name"
-                    className="text-sm px-3 py-2 w-full border border-gray-600 text-white rounded-md shadow-sm focus:border-mint transition-colors duration-300 outline-none"
-                />
-            </div>
-            <div className="grid grid-cols-4 gap-5">
+            </section>
+            <section className="grid grid-cols-2 space-y-1 gap-10">
+                <div className="space-y-1 col-span-1">
+                    <p className="text-left text-gray-300">Name</p>
+                    <input
+                        name="name"
+                        type="text"
+                        value={filters.name || ""}
+                        onChange={handleChange}
+                        placeholder="Search by name"
+                        className="text-sm px-3 py-2 w-full border border-gray-600 text-white rounded-md shadow-sm focus:border-mint transition-colors duration-300 outline-none"
+                    />
+                </div>
+                <div className="space-y-1 col-span-1">
+                    <p className="text-left text-gray-300">Species</p>
+                    <input
+                        name="species"
+                        type="text"
+                        value={filters.species || ""}
+                        onChange={handleChange}
+                        placeholder="Search by specie"
+                        className="text-sm px-3 py-2 w-full border border-gray-600 text-white rounded-md shadow-sm focus:border-mint transition-colors duration-300 outline-none"
+                    />
+                </div>
+            </section>
+            <section className="grid grid-cols-3 gap-5">
                 <div className="space-y-1">
                     <p className="text-left text-gray-300">Status</p>
                     <select
@@ -92,22 +105,6 @@ function Filters({ onFilterChange }: FiltersProps) {
                     </select>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-left text-gray-300">Species</p>
-                    <select
-                        name="species"
-                        value={filters.species || ""}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 text-sm bg-gray-700 border border-gray-600 text-white rounded-md shadow-sm focus:border-mint transition-colors duration-300"
-                    >
-                        <option value="">All</option>
-                        <option value="Human">Human</option>
-                        <option value="Robot">Robot</option>
-                        <option value="Alien">Alien</option>
-                        <option value="Animal">Animal</option>
-                        <option value="Cronenberg">Cronenberg</option>
-                    </select>
-                </div>
-                <div className="space-y-1">
                     <p className="block text-left text-gray-300">Sort by name</p>
                     <button onClick={toggleSort} className="flex justify-between items-center font-medium rounded-lg transition-colors duration-200 cursor-pointer border-2 border-mint text-mint hover:bg-mint hover:text-dark px-3 py-1.5 text-sm w-full">
                         <span>{filters.sort === "asc" ? "A-Z" : "Z-A"}</span>
@@ -118,8 +115,8 @@ function Filters({ onFilterChange }: FiltersProps) {
                         )}
                     </button>
                 </div>
-            </div>
-        </div>
+            </section>
+        </section>
     )
 }
 
