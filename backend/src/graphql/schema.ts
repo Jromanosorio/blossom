@@ -15,15 +15,21 @@ const schema = buildSchema(
             unknown
         }
 
+        type Comment {
+            user: String!
+            comment: String!
+        }
+
         type Character {
             id: Int!
             name: String!
             status: String!
             species: String!
-            type: String
             gender: Gender!
             origin: String!
             image: String!
+            isFavorite: Boolean
+            comments: [Comment]
         }    
 
         input Filters {
@@ -37,7 +43,10 @@ const schema = buildSchema(
 
         type Query {
             getAllCharacters(filters: Filters, limit: Int, offset: Int): [Character!]!
+            getFavorites(filters: Filters, limit: Int, offset: Int): [Character!]!
             getCharacterById(id: Int!): Character
+            handleFavorite(id: Int!): Character
+            createComment(characterId: Int!, user: String, comment: String): Comment
         }
     `
 )
