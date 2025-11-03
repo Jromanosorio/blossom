@@ -63,24 +63,7 @@ export const charactersAPI = {
     const res = await api.post('/', { query, variables })
     if (res.data.errors) throw new Error(res.data.errors[0].message)
 
-    console.log(res.data.data.getCharacterById)
     return res.data.data.getCharacterById
-  },
-
-  getAllComments: async(id: number) => {
-    const query = `
-      query($id: Int!) {
-        getAllComments(id: $id) {
-          user
-          comment
-        }
-      }
-    `
-    const variables = { id }
-    const res = await api.post('/', { query, variables })
-    if (res.data.errors) throw new Error(res.data.errors[0].message)
-
-    return res.data.data.getAllComments
   },
 
   sendComment: async(characterId: number, user: string, comment: string) => {
@@ -112,7 +95,6 @@ export const charactersAPI = {
           origin 
           image
           isFavorite
-          comments
         }
       }
     `
