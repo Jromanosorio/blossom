@@ -55,7 +55,8 @@ npm run dev
 
 #### Now can access to project 
   1. API `http://localhost:{PORT}` PORT by default = 3000
-  2. FRONTEND `http://localhost:{PORT}` PORT by default = 5173
+  2. MAKE GRAPHQL POST API CALLS `http://localhost:{PORT}/graphql` PORT by default = 3000
+  3. FRONTEND `http://localhost:{PORT}` PORT by default = 5173
 
 ---
 
