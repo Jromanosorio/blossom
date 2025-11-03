@@ -66,9 +66,9 @@ function Modal({ selectedCharacter, onHandleFavorite, onSubmitComment, onClose }
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center p-4'>
       <div className='absolute inset-0 bg-black/50 dark:bg-black/70' onClick={onClose} />
-      <div className='relative w-full bg-gray-800 dark:bg-gray-800 rounded-md shadow-xl max-w-2xl max-h-[90vh] px-10 py-5 overflow-y-auto border-2 border-gray-700'>
+      <div className='relative w-full bg-gray-800 dark:bg-gray-800 rounded-md shadow-xl max-w-2xl max-h-[90vh] mx-5 px-10 py-5 overflow-y-auto border-2 border-gray-700'>
         <h3 className='text-2xl! text-left font-bold border-b-2 border-gray-600 pb-5'>{selectedCharacter.name}</h3>
-        <div className='flex gap-10 my-5'>
+        <div className='flex flex-col md:flex-row gap-10 my-5 '>
           <img src={selectedCharacter.image} alt={`${selectedCharacter.image}_image`} className='border-2 rounded-xl' />
           <section className='flex flex-col text-left gap-5'>
             <div>

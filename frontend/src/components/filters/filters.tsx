@@ -42,7 +42,7 @@ function Filters({ onFilterChange, onShowFavorites }: FiltersProps) {
     }
 
     return (
-        <section className="bg-gray-800 border border-gray-700 rounded-lg p-10 space-y-6">
+        <section className="bg-gray-800 border border-gray-700 rounded-lg p-10 space-y-6 mx5">
             <section className="flex justify-between items-center">
                 <h2 className="font-semibold text-lg">Filters and sorting</h2>
                 <button onClick={onShowFavorites} className="flex gap-2 items-center justify-center font-semibold rounded-lg transition-colors duration-200 cursor-pointer border-2 px-4 py-2 text-sm border-orange text-orange">
@@ -50,7 +50,7 @@ function Filters({ onFilterChange, onShowFavorites }: FiltersProps) {
                     Favorites
                 </button>
             </section>
-            <section className="grid grid-cols-2 space-y-1 gap-10">
+            <section className="grid grid-cols-1 md:grid-cols-2 space-y-1 gap-3 md:gap-10">
                 <div className="space-y-1 col-span-1">
                     <p className="text-left text-gray-300">Name</p>
                     <input
@@ -74,7 +74,7 @@ function Filters({ onFilterChange, onShowFavorites }: FiltersProps) {
                     />
                 </div>
             </section>
-            <section className="grid grid-cols-3 gap-5">
+            <section className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
                 <div className="space-y-1">
                     <p className="text-left text-gray-300">Status</p>
                     <select

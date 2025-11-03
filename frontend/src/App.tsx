@@ -83,7 +83,7 @@ function App() {
         {
           loading
             ? <PulseLoader color='#e48c40' className='mt-20' />
-            : <div className='grid grid-cols-5 gap-10 mt-10'>
+            : <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-10'>
               {
                 characters && characters.map((char) => {
                   return (
