@@ -133,6 +133,21 @@ Send comment by characterID
 }
 ```
 
+
+#### **POST** `/graphql`
+
+Handle character favorite by characterID
+
+**Body requerido (JSON):**
+
+```json
+{
+  "query": "query($id: Int!) { handleFavorite(id: $id) { id name status species gender origin image isFavorite } }",
+  "variables": {
+    "id": 1,
+  }
+}
+```
 ---
 
 ## ⚙️ Tools
