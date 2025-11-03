@@ -12,7 +12,7 @@ interface CardProps {
 
 function Card(props: CardProps) {
     return (
-        <article className="relative mx-10 md:mx-3 lg:mx-2 xl:mx-0 bg-gray-800 border rounded-md overflow-hidden border-gray-700 group" style={{ opacity: 0, animation: "fadeIn 1s ease-out forwards", animationDelay: `${props.id * 100}ms` }}>
+        <article className="relative mx-10 md:mx-3 lg:mx-2 xl:mx-0 bg-gray-800 border rounded-md overflow-hidden border-gray-700 group animationFadeIn" style={{ opacity: 0, animationDelay: `${props.id * 100}ms` }}>
             <div className="overflow-hidden">
                 <img src={props.image} alt={`${props.name}_img`} className="w-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
             </div>
