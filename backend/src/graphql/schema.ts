@@ -48,7 +48,7 @@ const schema = buildSchema(
             getFavorites(filters: Filters, limit: Int, offset: Int): [Character!]!
             getCharacterById(id: Int!): Character
             handleFavorite(id: Int!): Character
-            createComment(characterId: Int!, user: String, comment: String): Comment
+            createComment(characterId: Int!, user: String!, comment: String!): Comment
         }
     `
 )

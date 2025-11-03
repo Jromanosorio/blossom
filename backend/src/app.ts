@@ -42,6 +42,7 @@ app.get('/', (req: Request, res: Response) => {
       queries: [
         'getAllCharacters(filters: Filters, limit: Int, offset: Int)',
         'getCharacterById(id: Int!)',
+        'createComment(characterId: Int!, user: String!, comment: String!)'
       ],
       filters: [
         'name: String',
@@ -76,11 +77,17 @@ app.get('/', (req: Request, res: Response) => {
           image
         }
       }`,
+      createComment: `query {
+        createComment(characterId: 1) {
+          user
+          comment
+        }
+      }`,
     }
   });
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`API Docs available at http://localhost:${PORT}/api/docs`);
+  console.log(`API Usage available at http://localhost:${PORT}/`);
 });
