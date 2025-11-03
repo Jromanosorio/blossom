@@ -65,7 +65,7 @@ npm run dev
 
 ```
 name: String,
-status: Status (Alive, Dead, unknown)'
+status: Status (Alive, Dead, Unknown)'
 species: String,
 gender: Gender (Female, Male, Genderless, Unknown),
 sort: (ASC, DESC), 
