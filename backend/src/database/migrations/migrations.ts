@@ -3,6 +3,7 @@ const Character = require('../models/Character.model');
 const Favorite = require('../models/Favorite.model');
 const Comments = require('../models/Comment.model');
 
+// Migrations method to generate Database
 
 const runMigrations = async () => {
   try {

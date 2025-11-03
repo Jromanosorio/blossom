@@ -2,6 +2,8 @@ import { Character } from "./Character.model"
 import { Comment } from "./Comment.model"
 import { Favorite } from "./Favorite.model"
 
+// Database relations between Models
+
 Character.hasOne(Favorite, {
   foreignKey: 'characterId',
   as: 'isFavorite',

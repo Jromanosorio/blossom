@@ -5,6 +5,8 @@ import { Character } from "../models/Character.model";
 
 require('dotenv').config();
 
+// Method to add characters from API to Database
+
 const seedCharacters = async () => {
     try {
         await sequelizeConfig.authenticate();

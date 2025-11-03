@@ -3,6 +3,8 @@ import { Sequelize } from "sequelize";
 const dotenv = require('dotenv');
 dotenv.config()
 
+// MySQL Database config paremeters
+
 const sequelizeConfig = new Sequelize({
     dialect: 'mysql',
     host: process.env.DATABASE_HOST || 'localhost',

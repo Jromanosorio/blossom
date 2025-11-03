@@ -1,5 +1,7 @@
 import { buildSchema } from "graphql";
 
+// GraphQL Schema to get data from Rick & Morty API
+
 const schema = buildSchema(
     `
         enum Status {

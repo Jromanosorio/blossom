@@ -3,10 +3,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Redis client config
+
 export const redisClient = new Redis({
   url: process.env.REDIS_HOST!,
   token: process.env.REDIS_PASSWORD!,
 });
+
+// test connection
 
 export const connectRedis = async () => {
   try {
@@ -17,6 +21,8 @@ export const connectRedis = async () => {
   }
 };
 
+// get Data stored in Cache
+
 export const getCachedData = async <T>(key: string): Promise<T | null> => {
   try {
     const data = await redisClient.get(key);
@@ -26,6 +32,8 @@ export const getCachedData = async <T>(key: string): Promise<T | null> => {
     return null;
   }
 };
+
+// save Data in cache
 
 export const setCachedData = async (
   key: string,
@@ -41,6 +49,8 @@ export const setCachedData = async (
   }
 };
 
+// delete data from cache
+
 export const deleteCachedData = async (key: string): Promise<boolean> => {
   try {
     await redisClient.del(key);
@@ -50,6 +60,8 @@ export const deleteCachedData = async (key: string): Promise<boolean> => {
     return false;
   }
 };
+
+// delete data from cache using the prefix 
 
 export const deleteCachedDataByPrefix = async (prefix: string) => {
   try {

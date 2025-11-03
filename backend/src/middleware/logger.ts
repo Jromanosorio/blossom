@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
+// Method to log in console data from request
+
 export const Logger = (req: Request, res: Response, next: NextFunction): void => {
   const startTime = Date.now();
   const timestamp = new Date().toISOString();

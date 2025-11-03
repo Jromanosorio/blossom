@@ -14,6 +14,7 @@ const buildCacheKey = (queryName: string, args: any) => {
   return `${queryName}:${JSON.stringify(args)}`;
 };
 
+// Method for create filters that will be applied in API Calls
 export const buildWhereClause = (filters: Partial<Filters>): WhereOptions<Filters> => {
   const where: WhereOptions<Filters> = {};
 
