@@ -19,11 +19,11 @@ function Card(props: CardProps) {
             <div className="p-3">
                 <h3 className="text-2xl! text-left font-bold mb-2 line-clamp-1">{props.name}</h3>
                 <span className="flex items-center gap-2"><FaDna size={14} />{props.species}</span>
-                <button onClick={props.viewDetails} className="w-full flex gap-2 mt-4 mb-2 items-center justify-center font-semibold rounded-lg transition-colors duration-200 cursor-pointer border-2 px-4 py-2 text-sm border-orange text-orange hover:text-gray-800 hover:bg-orange">
+                <button aria-label="details-button" onClick={props.viewDetails} className="w-full flex gap-2 mt-4 mb-2 items-center justify-center font-semibold rounded-lg transition-colors duration-200 cursor-pointer border-2 px-4 py-2 text-sm border-orange text-orange hover:text-gray-800 hover:bg-orange">
                     <FaEye size={15} /> View details
                 </button>
             </div>
-            <button className="border bg-gray-800 cursor-pointer text-orange absolute top-1 right-1 p-2.5 rounded-full" onClick={props.handleFavorite}>
+            <button aria-label="favorite-button" className="border bg-gray-800 cursor-pointer text-orange absolute top-1 right-1 p-2.5 rounded-full" onClick={props.handleFavorite}>
                 {
                 props.isFavorite 
                 ? <FaHeart size={15} /> 
